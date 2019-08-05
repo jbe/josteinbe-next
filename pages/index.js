@@ -1,4 +1,4 @@
-import Head from "next/Head";
+import Head from "next/head";
 import MainLayout from "../layouts/MainLayout";
 import sanityClient from "../sanityClient";
 import Nav from "../components/Nav";
