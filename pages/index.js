@@ -1,17 +1,10 @@
 import Head from "next/head";
 import MainLayout from "../layouts/MainLayout";
 import sanityClient from "../sanityClient";
+import { blurbTypes } from "../constants";
 import Nav from "../components/Nav";
 import NavItem from "../components/NavItem";
-import BlurbList from "../components/BlurbList";
-
-const blurbTypes = [
-  "imageBlurb",
-  "textBlurb",
-  "rabbitHoleBlurb",
-  "linkBlurb",
-  "tagBlurb"
-];
+import Blurb from "../components/blurb/Blurb";
 
 export default function Home(props) {
   const {
@@ -23,7 +16,9 @@ export default function Home(props) {
 
   return (
     <MainLayout siteConfig={siteConfig} pages={pages}>
-      <Head>{/* <title>NextJS learning project</title> */}</Head>
+      <Head>
+        <title>{header}</title>
+      </Head>
 
       <div style={{ display: "flex" }}>
         <div
@@ -64,7 +59,9 @@ export default function Home(props) {
       </div>
 
       <div style={{ marginTop: "4em" }}>
-        <BlurbList blurbs={blurbs} />
+        {blurbs.map(blurb => (
+          <Blurb key={blurb._id} blurb={blurb} />
+        ))}
       </div>
     </MainLayout>
   );
@@ -75,13 +72,13 @@ Home.getInitialProps = async req => {
     `{
       "siteConfig": *[_id == "site-config"][0],
       "pages": *[_type == "page"],
-      "blurbs": *[_type in [${blurbTypes
-        .map(name => '"' + name + '"')
-        .join(", ")}]] {
+      "blurbs": *[_type in 
+        $blurbTypes] {
           "imageFieldAsset": image.asset->,
           ...
         }
-    }`
+    }`,
+    { blurbTypes }
   );
 
   return {
