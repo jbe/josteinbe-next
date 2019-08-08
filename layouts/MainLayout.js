@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import Head from "next/head";
+import { SiteConfigContext } from "../contexts";
 
 export default function MainLayout(props) {
-  const {
-    children,
-    siteConfig: { header }
-  } = props;
+  const { children } = props;
+
+  const { header } = useContext(SiteConfigContext);
 
   return (
     <>
@@ -16,9 +17,15 @@ export default function MainLayout(props) {
       <style jsx global>{`
         html {
           box-sizing: border-box;
-          font-size: 16px;
-          font-family: sans-serif;
-          background-color: #821;
+          font: 14px/1.5 -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+            Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+            Segoe UI Symbol;
+          background-color: white;
+        }
+
+        .mono {
+          font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo,
+            monospace;
         }
 
         *,
@@ -40,32 +47,11 @@ export default function MainLayout(props) {
           margin: 0;
           padding: 0;
           font-weight: normal;
-          font-family: monospace;
-        }
-
-        ol,
-        ul {
-          list-style: none;
         }
 
         img {
           max-width: 100%;
           height: auto;
-        }
-
-        h1 {
-          font-size: 1.2em;
-          color: #fff;
-          display: inline-block;
-          font-weight: 400;
-          padding: 0.4em;
-        }
-        li a {
-          text-decoration: none;
-        }
-        h1,
-        .active {
-          background-color: #333;
         }
       `}</style>
 

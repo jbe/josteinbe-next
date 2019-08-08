@@ -1,84 +1,38 @@
+import { useContext } from "react";
 import Head from "next/head";
-import MainLayout from "../layouts/MainLayout";
 import sanityClient from "../sanityClient";
-import { blurbTypes } from "../constants";
-import Nav from "../components/Nav";
-import NavItem from "../components/NavItem";
-import Blurb from "../components/blurb/Blurb";
+import { SiteConfigContext } from "../contexts";
+import MainLayout from "../layouts/MainLayout";
+import Section from "../components/sections/Section";
 
-export default function Home(props) {
-  const {
-    siteConfig,
-    siteConfig: { header, description },
-    blurbs,
-    pages
-  } = props;
+export default function Index(props) {
+  const { frontpage } = props;
+  const { title } = useContext(SiteConfigContext);
+
+  if (!frontpage) return null;
 
   return (
-    <MainLayout siteConfig={siteConfig} pages={pages}>
+    <MainLayout>
       <Head>
-        <title>{header}</title>
+        <title>{title}</title>
       </Head>
 
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            padding: "2em",
-            margin: "2em",
-            backgroundColor: "rgba(255, 255, 255, 0.7)"
-          }}
-        >
-          <div>
-            <h1 title={description}>{header}</h1>
-          </div>
-
-          <div style={{ margin: "1em 0" }}>&darr;</div>
-
-          <Nav>
-            <NavItem active href="/">
-              Blurbs
-            </NavItem>
-            {pages.map(page => (
-              <NavItem key={page._id} href={"/" + page.slug.current}>
-                {page.title}
-              </NavItem>
-            ))}
-          </Nav>
-
-          <div style={{ margin: "1em 0" }}>&darr;</div>
-
-          <Nav>
-            <NavItem active href="/">
-              Latest
-            </NavItem>
-            <NavItem href="/posts/[postId]" as="/posts/1234">
-              Archives
-            </NavItem>
-          </Nav>
+      <div style={{}}>
+        <div>
+          {(frontpage.content || []).map(section => (
+            <Section key={section._key} section={section} />
+          ))}
         </div>
-      </div>
-
-      <div style={{ marginTop: "4em" }}>
-        {blurbs.map(blurb => (
-          <Blurb key={blurb._id} blurb={blurb} />
-        ))}
       </div>
     </MainLayout>
   );
 }
 
-Home.getInitialProps = async req => {
+Index.getInitialProps = async req => {
   const result = await sanityClient.fetch(
-    `{
-      "siteConfig": *[_id == "site-config"][0],
-      "pages": *[_type == "page"],
-      "blurbs": *[_type in 
-        $blurbTypes] {
-          "imageFieldAsset": image.asset->,
-          ...
-        }
-    }`,
-    { blurbTypes }
+    `
+       *[_id == "site-config"][0] { frontpage-> }
+    `
   );
 
   return {
