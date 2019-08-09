@@ -29,11 +29,9 @@ export default function Index(props) {
 }
 
 Index.getInitialProps = async req => {
-  const result = await sanityClient.fetch(
-    `
-       *[_id == "site-config"][0] { frontpage-> }
-    `
-  );
+  const result = await sanityClient.fetch(`
+      *[_id == "site-config"][0] { frontpage-> }
+  `);
 
   return {
     ...result

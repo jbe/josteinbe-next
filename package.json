@@ -5,6 +5,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@rooks/use-window-size": "^3.2.1",
     "@sanity/block-content-to-react": "^2.0.6",
     "@sanity/client": "^0.141.6",
     "@sanity/image-url": "^0.140.12",

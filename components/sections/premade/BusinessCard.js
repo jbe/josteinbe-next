@@ -1,20 +1,23 @@
 import { useContext } from "react";
 import Link from "next/link";
+import { useResponsiveMargin } from "../../../constants";
 import { SiteConfigContext } from "../../../contexts";
 
 export default function BusinessCard(props) {
   const { mainNavigation } = useContext(SiteConfigContext);
 
+  const margin = useResponsiveMargin();
+
   return (
     <div
       style={{
+        margin,
         padding: "3em",
-        margin: "15em",
         backgroundColor: "rgba(255, 255, 255, 0.7)",
         border: "1px solid #eaeaea",
         borderRadius: "3px",
         boxShadow: "0 15px 50px 0 rgba(100, 100, 180, 0.1)",
-        width: "40em"
+        maxWidth: "40em"
       }}
     >
       <div style={{ margin: "0 0 1em 0" }}>
