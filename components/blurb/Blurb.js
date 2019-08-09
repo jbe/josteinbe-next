@@ -4,8 +4,10 @@ import TextBlurb from "./TextBlurb";
 export default function Blurb(props) {
   const {
     blurb,
-    blurb: { _type }
+    blurb: { _type, publishedAt }
   } = props;
+
+  if (!publishedAt) return null; // TODO: should be in the query itself
 
   const Handler = {
     imageBlurb: ImageBlurb,

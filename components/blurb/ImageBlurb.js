@@ -1,4 +1,5 @@
 import PortableText from "../PortableText";
+import PostedDate from "./PostedDate";
 
 export default function ImageBlurb(props) {
   const {
@@ -10,8 +11,6 @@ export default function ImageBlurb(props) {
       imageFieldAsset: { url }
     }
   } = props;
-
-  const date = new Date(publishedAt);
 
   return (
     <div style={{ marginTop: "10%", marginBottom: "10%" }}>
@@ -39,9 +38,7 @@ export default function ImageBlurb(props) {
           }}
         >
           <PortableText text={text} />
-          <div style={{ marginTop: "2em", color: "#aaa" }}>
-            Posted {date.toDateString()}
-          </div>
+          <PostedDate publishedAt={publishedAt} />
         </div>
       </div>
     </div>

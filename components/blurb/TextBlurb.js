@@ -1,12 +1,16 @@
 import PortableText from "../PortableText";
+import PostedDate from "./PostedDate";
 
 export default function(props) {
-  const { blurb } = props;
+  const {
+    blurb: { body, publishedAt }
+  } = props;
 
   return (
     <div style={{ marginTop: "10%", marginBottom: "10%" }}>
       <div className="responsive-page-padding">
-        <PortableText text={blurb.body} />
+        <PortableText text={body} />
+        <PostedDate publishedAt={publishedAt} />
       </div>
     </div>
   );
