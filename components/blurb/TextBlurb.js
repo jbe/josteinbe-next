@@ -4,9 +4,10 @@ export default function(props) {
   const { blurb } = props;
 
   return (
-    <div>
-      <p>TODO: style text content</p>
-      <PortableText text={blurb.body} />
+    <div style={{ marginTop: "10%", marginBottom: "10%" }}>
+      <div className="responsive-page-padding">
+        <PortableText text={blurb.body} />
+      </div>
     </div>
   );
 }

@@ -46,6 +46,52 @@ export default function MainLayout(props) {
           font-weight: normal;
         }
 
+        .responsive-page-padding {
+          padding-left: 4%;
+          padding-right: 4%;
+        }
+        .responsive-page-padding-top {
+          padding-top: 4%;
+        }
+        .responsive-page-padding-bottom {
+          padding-bottom: 4%;
+        }
+        .responsive-column {
+          max-width: 75%;
+        }
+        @media (min-width: 600px) {
+          .responsive-page-padding {
+            padding-left: 10%;
+            padding-right: 10%;
+          }
+          .responsive-page-padding-top {
+            padding-top: 10%;
+          }
+          .responsive-page-padding-bottom {
+            padding-bottom: 10%;
+          }
+          .responsive-column {
+            max-width: 75%;
+          }
+        }
+        @media (min-width: 900px) {
+          .responsive-column {
+            max-width: 50%;
+          }
+        }
+        @media (min-width: 1300px) {
+          .responsive-page-padding {
+            padding-left: 12%;
+            padding-right: 12%;
+          }
+          .responsive-page-padding-top {
+            padding-top: 12%;
+          }
+          .responsive-page-padding-bottom {
+            padding-bottom: 12%;
+          }
+        }
+
         img {
           max-width: 100%;
           height: auto;

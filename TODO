@@ -1,9 +1,15 @@
 
 
-profile picture on card hover
+Front page
+  rabbit hole renderer
+  profile picture on card hover
+  Svg background, scroll animations, blurb animations
 
-responsive margin handling
+Content
+  navbar for other pages
+  blurb archive
+  add more content
 
-Svg background, scroll animations, blurb animations
 
-@sanity/production-preview
+Backlog
+  @sanity/production-preview

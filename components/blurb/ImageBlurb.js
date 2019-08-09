@@ -1,4 +1,3 @@
-import { useResponsiveMargin } from "../../constants";
 import PortableText from "../PortableText";
 
 export default function ImageBlurb(props) {
@@ -12,36 +11,31 @@ export default function ImageBlurb(props) {
     }
   } = props;
 
-  const margin = useResponsiveMargin(0);
-
   const date = new Date(publishedAt);
 
   return (
     <div style={{ marginTop: "10%", marginBottom: "10%" }}>
-      <img
-        src={url}
-        alt={altText}
-        style={{ paddingLeft: margin, paddingRight: margin }}
-      />
+      <img className="responsive-page-padding" src={url} alt={altText} />
       {title && (
-        <div style={{ color: "#aaa", textAlign: "right", marginRight: margin }}>
+        <div
+          className="responsive-page-padding"
+          style={{ color: "#aaa", textAlign: "right" }}
+        >
           {title}
         </div>
       )}
       <div
+        className="responsive-page-padding"
         style={{
           display: "flex",
-          marginLeft: margin,
-          marginRight: margin,
           marginTop: "2%"
         }}
       >
         <div
+          className="responsive-column"
           style={{
-            marginRight: "1em",
             flexGrow: 1,
-            lineHeight: 2,
-            maxWidth: "50%"
+            lineHeight: 2
           }}
         >
           <PortableText text={text} />
