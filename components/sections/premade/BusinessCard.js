@@ -1,20 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { SiteConfigContext } from "../../../contexts";
+import Card from "../../Card";
+import FadeIn from "../../animation/FadeIn";
 
 export default function BusinessCard(props) {
   const { mainNavigation } = useContext(SiteConfigContext);
 
   return (
-    <div className="responsive-page-padding responsive-page-padding-top responsive-page-padding-bottom">
-      <div
+    <FadeIn
+      className="responsive-page-padding responsive-page-padding-top responsive-page-padding-bottom"
+      translateFrom="-2em, 0"
+    >
+      <Card
         style={{
-          padding: "3em",
-          backgroundColor: "rgba(255, 255, 255, 0.7)",
-          border: "1px solid #eaeaea",
-          borderRadius: "3px",
-          boxShadow: "0 15px 50px 0 rgba(100, 100, 180, 0.1)",
-          maxWidth: "40em"
+          maxWidth: "32em"
         }}
       >
         <div style={{ margin: "0 0 1em 0" }}>
@@ -38,7 +38,7 @@ export default function BusinessCard(props) {
 
           {/* <div style={{ flexGrow: "1" }} /> */}
         </div>
-      </div>
-    </div>
+      </Card>
+    </FadeIn>
   );
 }

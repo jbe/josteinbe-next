@@ -1,6 +1,6 @@
 const BlockContent = require("@sanity/block-content-to-react");
-import { FaGoogle, FaImages, FaSearch } from "react-icons/fa";
-import { GiDuck } from "react-icons/gi";
+import Card from "../Card";
+import RabbitHole from "./RabbitHole";
 
 const serializers = {
   types: {
@@ -10,13 +10,12 @@ const serializers = {
       </pre>
     ),
     embedHTML: props => (
-      <div dangerouslySetInnerHTML={{ __html: props.node.html }} />
+      <div
+        className="responsive-video-iframe"
+        dangerouslySetInnerHTML={{ __html: props.node.html }}
+      />
     ),
-    rabbitHole: props => (
-      <div>
-        <FaSearch /> {props.node.term}
-      </div>
-    )
+    rabbitHole: props => <RabbitHole node={props.node} />
   }
 };
 

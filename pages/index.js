@@ -17,12 +17,10 @@ export default function Index(props) {
         <title>{title}</title>
       </Head>
 
-      <div style={{}}>
-        <div>
-          {(frontpage.content || []).map(section => (
-            <Section key={section._key} section={section} />
-          ))}
-        </div>
+      <div>
+        {(frontpage.content || []).map(section => (
+          <Section key={section._key} section={section} />
+        ))}
       </div>
     </MainLayout>
   );

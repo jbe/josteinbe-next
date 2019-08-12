@@ -1,5 +1,7 @@
-import PortableText from "../PortableText";
+import PortableText from "../text/PortableText";
 import PostedDate from "./PostedDate";
+import FadeIn from "../animation/FadeIn";
+import { useInView } from "react-intersection-observer";
 
 export default function ImageBlurb(props) {
   const {
@@ -8,22 +10,25 @@ export default function ImageBlurb(props) {
       text,
       publishedAt,
       title,
+      imageFieldAsset,
       imageFieldAsset: { url }
     }
   } = props;
 
   return (
     <div style={{ marginTop: "10%", marginBottom: "10%" }}>
-      <img className="responsive-page-padding" src={url} alt={altText} />
-      {title && (
-        <div
-          className="responsive-page-padding"
-          style={{ color: "#aaa", textAlign: "right" }}
-        >
-          {title}
-        </div>
-      )}
-      <div
+      <FadeIn translateFrom="2em, 0">
+        <img className="responsive-page-padding" src={url} alt={altText} />
+        {title && (
+          <div
+            className="responsive-page-padding"
+            style={{ color: "#aaa", textAlign: "right" }}
+          >
+            {title}
+          </div>
+        )}
+      </FadeIn>
+      <FadeIn
         className="responsive-page-padding"
         style={{
           display: "flex",
@@ -37,10 +42,10 @@ export default function ImageBlurb(props) {
             lineHeight: 2
           }}
         >
-          <PortableText text={text} />
+          {text && <PortableText text={text} />}
           <PostedDate publishedAt={publishedAt} />
         </div>
-      </div>
+      </FadeIn>
     </div>
   );
 }
