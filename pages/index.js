@@ -9,11 +9,9 @@ import Section from "../components/sections/Section";
 export default function Index(props) {
   const {
     siteConfig,
-    siteConfig: { frontpage },
+    siteConfig: { frontpage, title },
     blurbs
   } = props;
-
-  const { title } = useContext(SiteConfigContext);
 
   if (!frontpage) return null;
 
