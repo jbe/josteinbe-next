@@ -28,6 +28,16 @@ export default function Index(props) {
               <Section key={section._key} section={section} />
             ))}
           </div>
+
+          <footer
+            className="responsive-page-padding"
+            style={{ color: "#aaa", marginBottom: "5%" }}
+          >
+            <a href="https://jostein-be.tumblr.com/">
+              Enter another rabbit hole
+            </a>{" "}
+            🐇
+          </footer>
         </MainLayout>
       </BlurbsContext.Provider>
     </SiteConfigContext.Provider>
