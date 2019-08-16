@@ -1,12 +1,8 @@
 
-Front page
-  profile picture on card hover
-  Svg background, scroll animations, blurb animations
 
 Content
-  navbar for other pages
-  blurb archive
-  add more content
+  only one blurb type, with optional fields,
+  or model like page sections
 
 
 Backlog

@@ -7,11 +7,13 @@ function RabbitHoleButton(props) {
   return (
     <a href={href} title={title}>
       <button
+        className="insane"
         style={{
           fontSize: "1.2em",
-          border: "2px solid #aaa",
+          // border: "2px solid #aaa",
+          // border: "none",
           borderRadius: "0.4em",
-          background: "transparent",
+          // background: "transparent",
           // background: "#666",
           // color: "#555",
           padding: "0.5em 0.5em 0.3em 0.5em",
@@ -34,7 +36,7 @@ export default function RabbitHole(props) {
     <div
       style={{
         display: "flex",
-        margin: "5% 0 5% 0",
+        margin: "1em 0 1em 0",
         fontSize: "1.5em",
         alignItems: "bottom"
       }}

@@ -1,5 +1,5 @@
 import BaseApp, { Container } from "next/app";
-import sanityClient from "../sanityClient";
+import { client } from "../sanityClient";
 import { blurbTypes } from "../constants";
 import { SiteConfigContext, BlurbsContext } from "../contexts";
 
@@ -28,7 +28,7 @@ class App extends BaseApp {
   static async getInitialProps({ Component, ctx }) {
     const componentProps = await Component.getInitialProps(ctx);
 
-    const appProps = await sanityClient.fetch(query, { blurbTypes });
+    const appProps = await client.fetch(query, { blurbTypes });
 
     return { componentProps, appProps };
   }

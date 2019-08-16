@@ -2,7 +2,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export",
+    "deploy": "yarn build && yarn export export"
   },
   "dependencies": {
     "@rooks/use-window-size": "^3.2.1",

@@ -1,5 +1,4 @@
-import sanityClient from "../sanityClient";
-import { useRouter } from "next/router";
+import { client } from "../sanityClient";
 import Head from "next/head";
 import Section from "../components/sections/Section";
 import MainLayout from "../layouts/MainLayout";
@@ -34,7 +33,7 @@ Page.getInitialProps = async req => {
     query: { slug }
   } = req;
 
-  const result = await sanityClient.fetch(
+  const result = await client.fetch(
     `{
       "route": *[_type == "route" && slug.current == $slug ] [0] {
         ...,

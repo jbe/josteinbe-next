@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { BlurbsContext } from "../../contexts";
 import Blurb from "../blurb/Blurb";
 
-export default function BlurbStream(props) {
+export default function BlurbStreamSection(props) {
   const blurbs = useContext(BlurbsContext);
 
   return (

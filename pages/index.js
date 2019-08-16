@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Head from "next/head";
-import sanityClient from "../sanityClient";
+import { client } from "../sanityClient";
 import { SiteConfigContext } from "../contexts";
 import MainLayout from "../layouts/MainLayout";
 import Section from "../components/sections/Section";
@@ -27,7 +27,7 @@ export default function Index(props) {
 }
 
 Index.getInitialProps = async req => {
-  const result = await sanityClient.fetch(`
+  const result = await client.fetch(`
       *[_id == "site-config"][0] { frontpage-> }
   `);
 

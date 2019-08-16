@@ -7,5 +7,3 @@ export const blurbTypes = [
   "linkBlurb",
   "tagBlurb"
 ];
-
-export const rabbitHoleEngines = ["google", "googleImage", "duckDuckGo"];
